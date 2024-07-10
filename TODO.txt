@@ -1,0 +1,16 @@
+if there is no operator and the text box is filled:
+DISPLAY THE VALUE IN THE TEXT BOX AND CLEAR IT
+
+if there is no operator and the text box isn't filled:
+DO NOTHING
+
+if the operator is there and the text box is filled:
+RECEIVE THE NEXT NUMBER AND PERFORM THE CALCULATION
+
+if the operator is there and the text box isn't filled:
+SEC NUM DEFAULTS TO ZERO AND PERFORM CALCULATION
+
+
+SCENARIOS:
+WHAT IF?:
+1. I press an operator first b4 entering a number.(Unresolved)
