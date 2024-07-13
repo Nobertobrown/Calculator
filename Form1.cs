@@ -24,10 +24,42 @@ namespace Calculator
             InitializeComponent();
         }
 
+        private void calculate()
+        {
+            try
+            {
+                switch (Operator)
+                {
+                    case "+":
+                        Result = ButtonNum1 + ButtonNum2;
+                        break;
+                    case "-":
+                        Result = ButtonNum1 - ButtonNum2;
+                        break;
+                    case "×":
+                        Result = ButtonNum1 * ButtonNum2;
+                        break;
+                    case "÷":
+                        Result = ButtonNum1 / ButtonNum2;
+                        break;
+                    default:
+                        txtResult.Clear();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btn_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             ButtonText = btn.Text;
+
+            if (ButtonText == "." && txtResult.Text.Contains(".")) return;
+            if (ButtonText == "0" && !txtResult.Text.Contains(".") && txtResult.Text.Length == 0) return;
 
             txtResult.Text += ButtonText;
         }
@@ -57,25 +89,7 @@ namespace Calculator
 
             if (ButtonNum1 != 0 && ButtonNum2 != 0)
             {
-                switch (Operator)
-                {
-                    case "+":
-                        Result = ButtonNum1 + ButtonNum2;
-                        break;
-                    case "-":
-                        Result = ButtonNum1 - ButtonNum2;
-                        break;
-                    case "×":
-                        Result = ButtonNum1 * ButtonNum2;
-                        break;
-                    case "÷":
-                        Result = ButtonNum1 / ButtonNum2;
-                        break;
-                    default:
-                        txtResult.Clear();
-                        break;
-                }
-
+                calculate();
                 ButtonNum1 = Result;
                 ButtonNum2 = 0;
                 txtResult.Clear();
@@ -88,7 +102,7 @@ namespace Calculator
         {
             if (Operator == null)
             {
-                if (txtResult.Text != null)
+                if (txtResult.Text != "")
                 {
                     lblDisplay.Text = txtResult.Text;
                     txtResult.Clear();
@@ -98,34 +112,29 @@ namespace Calculator
             {
                 double.TryParse(txtResult.Text, out ButtonNum2);
 
-                switch (Operator)
-                {
-                    case "+":
-                        Result = ButtonNum1 + ButtonNum2;
-                        break;
-                    case "-":
-                        Result = ButtonNum1 - ButtonNum2;
-                        break;
-                    case "×":
-                        Result = ButtonNum1 * ButtonNum2;
-                        break;
-                    case "÷":
-                        Result = ButtonNum1 / ButtonNum2;
-                        break;
-                    default:
-                        txtResult.Clear();
-                        break;
-                }
-
-                ButtonNum1 = Result;
+                calculate();
+                lblDisplay.Text = $"{ButtonNum1} {Operator} {ButtonNum2} = {Result}";
+                ButtonNum1 = 0;
                 ButtonNum2 = 0;
                 txtResult.Clear();
                 Operator = null;
-                lblDisplay.Text = Convert.ToString(Result);
-
+                Result = 0;
             }
         }
 
-        private void clear_Click(object sender, EventArgs e) { }
+        private void clear_Click(object sender, EventArgs e)
+        {
+            txtResult.Clear();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtResult.Clear();
+            Operator = null;
+            ButtonNum1 = 0;
+            ButtonNum2 = 0;
+            Result = 0;
+            lblDisplay.Text = 0.ToString();
+        }
     }
 }

@@ -349,9 +349,9 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(105, 73);
             this.btnReset.TabIndex = 1;
-            this.btnReset.Text = "C";
+            this.btnReset.Text = "CE";
             this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.clear_Click);
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tableLayoutPanel1
             // 

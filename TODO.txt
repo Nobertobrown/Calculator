@@ -1,16 +1,12 @@
-if there is no operator and the text box is filled:
-DISPLAY THE VALUE IN THE TEXT BOX AND CLEAR IT
-
-if there is no operator and the text box isn't filled:
-DO NOTHING
-
-if the operator is there and the text box is filled:
-RECEIVE THE NEXT NUMBER AND PERFORM THE CALCULATION
-
-if the operator is there and the text box isn't filled:
-SEC NUM DEFAULTS TO ZERO AND PERFORM CALCULATION
-
-
-SCENARIOS:
-WHAT IF?:
-1. I press an operator first b4 entering a number.(Unresolved)
+SCENARIOS/TEST CASES:
+. I do consecutive calculations while pressing equal in btn. (resolved)
+. I do consecutive calculations without pressing equal in btn. (resolved)
+. I press an operator first b4 entering a number. (Unresolved)
+. I press the clear btn. (resolved)
+. I press the reset btn. (resolved)
+. I divide by zero. (unresolved)
+. I try to add consecutive zeros before any other num or point. (unresolved)
+. I try to add more than one point. (resolved)
+. I do consecutive calculation without specifying the second num. (unresolved)
+. I press an operator b4 the equal sign. (unresolved)
+. I press equal sign while text box is empty. (unresolved)
